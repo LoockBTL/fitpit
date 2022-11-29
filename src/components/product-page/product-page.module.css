@@ -1,0 +1,39 @@
+.container{
+  max-width: 1080px;
+  padding: 10px;
+  margin: 0 auto;
+  display: flex;
+  border: 1px solid black;  
+}
+.info{
+  min-width: 500px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+}
+.name{
+  background-color: black;
+  color: white;
+  font-weight: 800;
+  font-size: 18px;
+  padding: 10px 0px;
+}
+.price{
+  color: black;
+  font-weight: 600;
+}
+.button{
+  margin: 0;
+  padding: 10px;
+  background-color: rgb(229, 255, 0);
+  color: black;
+  font-weight: 600;
+  transition: .2s;
+  cursor: pointer;
+}
+
+.button:hover{
+  background-color: rgb(43, 255, 0);
+
+}

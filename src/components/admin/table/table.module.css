@@ -1,0 +1,38 @@
+.main {
+  width: 80%;
+  margin: 0 auto;
+}
+.tagName {
+  border: 1px solid black;
+}
+
+.main__table {
+  display: flex;
+  justify-content: space-between;
+}
+.objArray{
+  border: 1px solid black;
+  display: flex;
+}
+.table {
+  border: 1px solid black;
+}
+
+.functions {
+  border: 1px solid black;
+  width: 25%;
+}
+
+.obj {
+  padding: 2px;
+  border: 1px solid black;
+  margin: 0;
+}
+
+.obj:hover {
+  background-color: aqua;
+  cursor: pointer;
+}
+.td{
+  min-width: 100px;
+}

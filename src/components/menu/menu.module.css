@@ -1,0 +1,6 @@
+.app {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1080px;
+  flex-wrap: wrap;
+}

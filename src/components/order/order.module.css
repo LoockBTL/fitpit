@@ -1,0 +1,88 @@
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+.block {
+  padding: 20px;
+  margin: 10px;
+  border: 1px solid black;
+}
+.block__item {
+  padding: 20px;
+  margin: 10px;
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.orderitem {
+  margin: 10px;
+  border: 1px solid black;
+  text-align: center;
+}
+.title {
+  text-align: center;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+  font-size: 24px;
+  padding: 10px;
+}
+.button {
+  background-color: black;
+  color: white;
+  text-align: center;
+  width: 200px;
+  height: 50px;
+  display: inline-block;
+  margin: 15px 0px;
+  font-weight: 800;
+  padding: 10px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.button:hover {
+  color: grey;
+}
+.info {
+  background-color: aqua;
+  padding: 10px;
+}
+.input {
+  text-align: center;
+  width: 200px;
+  height: 25px;
+  display: inline-block;
+}
+.count {
+  margin: 5px;
+}
+.buyButton{
+  text-decoration: none;
+  color: black;
+  background-color: red;
+  width: 100%;
+  text-align: center;
+  border: 1px solid black;
+  font-weight: 800;
+  font-size: 24px;
+  transition: .2s;
+  padding: 20px 10px;
+}
+
+.buyButton:hover{
+  background-color: rgb(43, 255, 0);
+
+}
+
+.error{
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+.text{
+  font-weight: 800;
+  font-size: 36px;
+}

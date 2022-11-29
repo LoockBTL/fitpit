@@ -1,0 +1,47 @@
+.window{
+  width:250px;
+  margin: 150px auto;
+  border: 1px solid black;
+}
+
+.text {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.form{
+  padding: 10px 20px;
+}
+
+.button{
+   background-color: black;
+   color: white;
+   text-align: center;
+   width: 200px;
+   height: 50px;
+   display: inline-block;
+   margin: 15px 0px;
+   font-weight: 800;
+   padding: 10px;
+  transition: .2s;
+}
+
+.input{
+  text-align: center;
+  width: 200px;
+  height: 25px;
+  display: inline-block;
+}
+.button:hover{
+  color: grey;
+
+}
+
+.error {
+  font-weight: 600;
+  text-align: center;
+  color: red;
+}
