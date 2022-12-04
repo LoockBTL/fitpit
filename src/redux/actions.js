@@ -2,6 +2,7 @@ import { INCREMENT, DECREMENT, LOAD_PRODUCTS, LOAD_BUSKET, LOAD_ORDER, LOAD_PROV
 
 export const loadProducts = () => ({
   type: LOAD_PRODUCTS,
+  CallApi: 'http://localhost:3001/api/product'
 });
 
 export const loadBusket = () => ({
