@@ -1,12 +1,11 @@
-import { products as info } from "../../database";
 import { LOAD_PRODUCTS } from "../constatns";
 
-const products = (state = info, action) => {
-  const {type} = action;
+const products = (state = [], action) => {
+  const {type, data} = action;
 
   switch (type) {
     case LOAD_PRODUCTS:
-      return state
+      return state = data
     default:
       return state
   }

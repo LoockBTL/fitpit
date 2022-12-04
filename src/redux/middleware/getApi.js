@@ -1,15 +1,24 @@
+const createPostParams = (data) => ({
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(data),
+});
+
 const getApi = (store) => (next) => async (action) => {
  if(!action.CallApi) next(action);
 
- const {CallApi} = action;
+ const {CallApi, postData} = action;
 
  try {
-  const res = await fetch(CallApi, { mode: 'no-cors'});
-  console.log(res)
+  const params = postData ? createPostParams(postData) : {};
+
+  const res = await fetch(CallApi, params);
   const data = await res.json();
   console.log(data);
+  next({...action, data})
  } catch (error) {
   console.log(error)
+  next(action)
  }
 }
 

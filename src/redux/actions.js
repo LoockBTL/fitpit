@@ -2,7 +2,7 @@ import { INCREMENT, DECREMENT, LOAD_PRODUCTS, LOAD_BUSKET, LOAD_ORDER, LOAD_PROV
 
 export const loadProducts = () => ({
   type: LOAD_PRODUCTS,
-  CallApi: 'http://localhost:3001/api/product'
+  CallApi: 'http://localhost:3001/api/products'
 });
 
 export const loadBusket = () => ({
@@ -16,6 +16,7 @@ export const loadOrder = (takenOrder) => ({
 
 export const loadProviders = () => ({
   type: LOAD_PROVIDERS,
+  CallApi: 'http://localhost:3001/api/providers'
 })
 
 export const login = (userData) => ({

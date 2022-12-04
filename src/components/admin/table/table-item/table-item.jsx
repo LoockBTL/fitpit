@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid'
 import Form from '../form/index'
 
 const TableItem = ({ table, setForm }) => {
-  if (table === undefined) return <div className={s.empty}>Empry Table</div>
+  if (table === undefined || table === null) return <div className={s.empty}>Empry Table</div>
   const colonsName = Object.keys(table[0])
   console.log(table)
 

@@ -12,13 +12,16 @@ const Table = ({
   providers,
   product,
 }) => {
-  const [table, setTable] = useState(product)
-  const [form, setForm] = useState(<></>)
   useEffect(() => {
     loadOrder()
     loadProducts()
     loadProviders()
   })
+
+  const [table, setTable] = useState(product)
+  const [form, setForm] = useState(<></>)
+
+  if(providers===null || product===null) return (<div>loading</div>)
 
   const deleteLine = (table) => {
     setForm(<Form table={table} type="delete" />)

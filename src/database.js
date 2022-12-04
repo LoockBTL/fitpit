@@ -6,7 +6,7 @@ export const products = [
     price: '200',
     description: 'Набор з основних амінокислот',
     mass: '300',
-    array: ['1', '2', '3']
+
   },
   {
     id: '09a698a4-d7ef-47f4-b75a-b3c83fb80db2',
@@ -15,7 +15,7 @@ export const products = [
     price: '500',
     description: 'Вуглевідний набір для набору маси',
     mass: '2000',
-    array: ['1', '2', '3']
+
   },
   {
     id: 'c7a59737-3f62-4bee-b549-67117680c498',
@@ -24,7 +24,7 @@ export const products = [
     price: '650',
     description: 'Білковий набір для набору маси',
     mass: '2000',
-    array: ['1', '2', '3']
+
   },
   {
     id: 'f6a502a7-e65a-458e-b203-abe6245aebf1',
@@ -33,7 +33,6 @@ export const products = [
     price: '250',
     description: 'Амінокіслота цитрлін-малат',
     mass: '250',
-    array: ['1', '2', '3']
   },
   {
     id: 'a11b36c9-91b4-452f-b724-d32a6f4ee993',
@@ -42,7 +41,6 @@ export const products = [
     price: '50',
     description: 'Високий вмість кофеіну',
     mass: '200',
-    array: ['1', '2', '3']
   },
   {
     id: 'a7445ea5-b5b8-4b26-b907-dd9407de52db',
@@ -51,7 +49,6 @@ export const products = [
     price: '250',
     description: 'Одна із важливих амінокіслот',
     mass: '300',
-    array: ['1', '2', '3']
   },
   {
     id: '8a49c48b-e8e6-4291-b117-4c8df8b08169',
@@ -60,7 +57,6 @@ export const products = [
     price: '1000',
     description: 'Комплект для набору маси',
     mass: '4000',
-    array: ['1', '2', '3']
   },
   {
     id: '2dc1fa75-5126-464e-9417-19d1b0af2299',
@@ -69,7 +65,6 @@ export const products = [
     price: '400',
     description: 'Преперат для жироспалювання',
     mass: '350',
-    array: ['1', '2', '3']
   },
 ]
 
