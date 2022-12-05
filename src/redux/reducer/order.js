@@ -1,16 +1,15 @@
-import { LOAD_ORDER } from "../constatns";
+import { LOAD_ORDER, POST_ORDER } from "../constatns";
 
-const initialOrder = {
-  entities: []
-}
 
-const order = (state = initialOrder, action) => {
-  const { type, takenOrder} = action;
+const order = (state = {}, action) => {
+  const { type, data } = action;
 
 
   switch (type) {
+    case POST_ORDER:
+      return state;
     case LOAD_ORDER:
-      return {...takenOrder}
+      return data;
     default:
       return state;
   }

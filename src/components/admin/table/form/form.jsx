@@ -25,7 +25,7 @@ const Form = ({ type, table, item, arr, obj }) => {
       return (
         <form className={s.from} onSubmit={onSubmit}>
           {object.map((obj) => {
-            if (obj === 'id') return <></>
+            if (obj === '_id') return <></>
             return (
               <div className={s.label}>
                 <label>{obj}</label>
@@ -37,7 +37,7 @@ const Form = ({ type, table, item, arr, obj }) => {
         </form>
       )
     case 'change':
-      if (item === 'id') {
+      if (item === '_id') {
         return <div>Нельзя менять</div>
       }
       return (

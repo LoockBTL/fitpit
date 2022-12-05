@@ -11,8 +11,8 @@ const Menu = ({ products, loadProducts }) => {
 
   return (
     <div className={s.app}>
-      {products.map(({ id, name, price }) => (
-        <Product key={id} name={name} price={price} id={id} />
+      {products.map(({ _id, name, price }) => (
+        <Product key={_id} name={name} price={price} id={_id} />
       ))}
     </div>
   )

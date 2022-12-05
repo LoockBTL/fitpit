@@ -34,7 +34,7 @@ const providerSchema = new Schema({
     type: String,
     required: true,
   },
-}, { timestamps: true })
+})
 
 const Provider = mongoose.model('Provider', providerSchema);
 

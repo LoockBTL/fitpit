@@ -25,8 +25,12 @@ const productSchema = new Schema({
   mass: {
     type: String,
     required: true,
+  },
+  providerId: {
+    type: String,
+    required: true,
   }
-}, { timestamps: true })
+})
 
 const Product = mongoose.model('Product', productSchema);
 

@@ -3,9 +3,9 @@ import { v4 as uuid } from 'uuid'
 import Form from '../form/index'
 
 const TableItem = ({ table, setForm }) => {
-  if (table === undefined || table === null) return <div className={s.empty}>Empry Table</div>
+  if (table === undefined || table === null || table === {})
+    return <div className={s.empty}>Empry Table</div>
   const colonsName = Object.keys(table[0])
-  console.log(table)
 
   return (
     <table className={s.table}>
@@ -33,15 +33,59 @@ const ArrayObj = ({ obj, item, setForm }) => {
   if (Array.isArray(obj[item])) {
     return (
       <div className={s.objArray} key={uuid()}>
-        {obj[item].map((arr) => (
+        {obj[item].map((arr) => {
+          if (typeof arr === 'object') {
+            const arrObject = Object.values(arr)
+            return (
+              <div className={s.objArray} key={uuid()}>
+                {arrObject.map((arrObj) => (
+                  <p
+                    className={s.obj}
+                    key={uuid()}
+                    onDoubleClick={() =>
+                      setForm(
+                        <Form
+                          type="change"
+                          obj={obj}
+                          item={item}
+                          arr={arrObj}
+                        />
+                      )
+                    }
+                  >
+                    {arrObj}
+                  </p>
+                ))}
+              </div>
+            )
+          }
+          return (
+            <p
+              className={s.obj}
+              key={uuid()}
+              onDoubleClick={() =>
+                setForm(<Form type="change" obj={obj} item={item} arr={arr} />)
+              }
+            >
+              {arr}
+            </p>
+          )
+        })}
+      </div>
+    )
+  } else if (typeof obj[item] === 'object') {
+    const arrObject = Object.values(obj[item])
+    return (
+      <div className={s.objArray} key={uuid()}>
+        {arrObject.map((arrObj) => (
           <p
             className={s.obj}
             key={uuid()}
             onDoubleClick={() =>
-              setForm(<Form type="change" obj={obj} item={item} arr={arr} />)
+              setForm(<Form type="change" obj={obj} item={item} arr={arrObj} />)
             }
           >
-            {arr}
+            {arrObj}
           </p>
         ))}
       </div>
@@ -52,7 +96,7 @@ const ArrayObj = ({ obj, item, setForm }) => {
         className={s.obj}
         key={uuid()}
         onDoubleClick={() =>
-          setForm(<Form type="change" item={item} obj={obj} arr={obj[item]}/>)
+          setForm(<Form type="change" item={item} obj={obj} arr={obj[item]} />)
         }
       >
         {obj[item]}

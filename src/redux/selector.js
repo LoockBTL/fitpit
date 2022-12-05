@@ -9,7 +9,7 @@ export const busketOrders = (state) => {
     .map((productId) => productsObject[productId])
     .map((product) => ({
       ...product,
-      total: busket[product.id],
+      total: busket[product._id],
     }))
 
   return order
@@ -19,7 +19,7 @@ function arrToObject(item) {
   let maneObject = {}
 
   for (let i = 0; i < item.length; i++) {
-    const id = item[i].id
+    const id = item[i]._id
     const itemToid = item[i]
 
     maneObject = { ...maneObject, [id]: itemToid }

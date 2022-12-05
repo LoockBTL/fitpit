@@ -10,9 +10,9 @@ const ProductPage = ({ products, increment, loadProducts }) => {
   }, []) // eslint-disable-line
 
   const { choisenId } = useParams()
-  const element = products.find(({ id }) => choisenId === id)
+  const element = products.find(({ _id }) => choisenId === _id)
 
-  const { id, name, amount, price, description, mass } = element
+  const { _id, name, amount, price, description, mass } = element
   return (
     <div className={s.container}>
       <img
@@ -26,7 +26,7 @@ const ProductPage = ({ products, increment, loadProducts }) => {
         <p className={s.price}>{price}$</p>
         <p className={s.decription}>Описание: {description}</p>
         <p className={s.mass}>Масса: {mass}</p>
-        <button onClick={() => increment(id)} className={s.button}>
+        <button onClick={() => increment(_id)} className={s.button}>
           Buy
         </button>
       </div>

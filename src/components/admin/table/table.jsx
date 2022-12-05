@@ -1,27 +1,31 @@
 import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { loadOrder, loadProducts, loadProviders } from '../../../redux/actions'
+import { loadOrder, loadProducts, loadProviders, loadDeclarations } from '../../../redux/actions'
 import Form from './form/index'
 import TableItem from './table-item/index'
 import s from './table.module.css'
 
 const Table = ({
+  loadDeclarations,
   loadOrder,
   loadProducts,
   loadProviders,
   providers,
   product,
+  orders,
+  declarations
 }) => {
   useEffect(() => {
+    loadDeclarations()
     loadOrder()
     loadProducts()
     loadProviders()
-  })
-
+  },[]) // eslint-disable-line
+  console.log(declarations)
   const [table, setTable] = useState(product)
   const [form, setForm] = useState(<></>)
 
-  if(providers===null || product===null) return (<div>loading</div>)
+  if(product.length === 0) return (<div>loading</div>)
 
   const deleteLine = (table) => {
     setForm(<Form table={table} type="delete" />)
@@ -51,6 +55,22 @@ const Table = ({
           >
             Providers
           </button>
+          <button
+            onClick={() => {
+              setTable(orders)
+              setForm(<></>)
+            }}
+          >
+            Orders
+          </button>
+          <button
+            onClick={() => {
+              setTable(declarations)
+              setForm(<></>)
+            }}
+          >
+            Declarations
+          </button>
         </div>
         <div className={s.main__table}>
           <TableItem table={table} setForm={setForm} />
@@ -70,12 +90,15 @@ const Table = ({
 const mapStateToProps = (state) => ({
   product: state.products,
   providers: state.providers,
+  orders: state.order,
+  declarations: state.declarations
 })
 
 const mapDispatchToProps = {
   loadOrder,
   loadProducts,
   loadProviders,
+  loadDeclarations
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table)

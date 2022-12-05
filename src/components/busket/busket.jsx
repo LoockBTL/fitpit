@@ -41,7 +41,7 @@ const Busket = ({
         {orderProducts.map((item) => {
           totalPrice = totalPrice + item.total * item.price
           return (
-            <div className={s.item} key={item.id}>
+            <div className={s.item} key={item._id}>
               <img
                 alt="product"
                 height="150px"
@@ -51,9 +51,9 @@ const Busket = ({
                 <p>{item.name}</p>
                 <p>Цена: {item.total * item.price} $</p>
                 <div className={s.buttons}>
-                  <button onClick={() => increment(item.id)}>+</button>
+                  <button onClick={() => increment(item._id)}>+</button>
                   <p className={s.count}>{item.total}</p>
-                  <button onClick={() => decrement(item.id)}>-</button>
+                  <button onClick={() => decrement(item._id)}>-</button>
                 </div>
               </div>
             </div>

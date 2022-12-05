@@ -1,23 +1,22 @@
-const createPostParams = (data) => ({
-  method: 'POST',
+const createParams = (paramsData) => ({
+  method: paramsData.method,
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(data),
+  body: JSON.stringify(paramsData.body),
 });
 
 const getApi = (store) => (next) => async (action) => {
- if(!action.CallApi) next(action);
+ if(!action.CallApi) return next(action);
 
- const {CallApi, postData} = action;
+ const {CallApi, paramsData} = action;
 
  try {
-  const params = postData ? createPostParams(postData) : {};
+  const params = paramsData ? createParams(paramsData) : {};
 
   const res = await fetch(CallApi, params);
   const data = await res.json();
-  console.log(data);
+
   next({...action, data})
  } catch (error) {
-  console.log(error)
   next(action)
  }
 }

@@ -1,30 +1,29 @@
 import { useRef } from 'react'
 import { connect } from 'react-redux'
-import { loadOrder } from '../../redux/actions'
+import { postOrder } from '../../redux/actions'
 import { busketOrders } from '../../redux/selector'
 import { Link } from 'react-router-dom'
-import { v4 as uuidv4 } from 'uuid';
 import s from './order.module.css'
 
-const Order = ({ order, orderProducts, loadOrder }) => {
+const Order = ({ order, orderProducts, postOrder }) => {
   const name = useRef()
   const secondName = useRef()
   const thirdName = useRef()
   const email = useRef()
   const number = useRef()
   const date = new Date().toLocaleDateString();
+  
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    loadOrder({
-      id: uuidv4(),
+    postOrder({
       name: name.current.value,
       secondName: secondName.current.value,
       thirdName: thirdName.current.value,
       email: email.current.value,
       number: number.current.value,
       date,
-      entities: orderProducts,
+      entities: orderProducts.map(({_id, total}) => ({_id, total})),
     })
   }
 
@@ -101,7 +100,7 @@ const mapStateToProps = (state) => ({
   orderProducts: busketOrders(state),
 })
 const mapDispatchToProps = {
-  loadOrder,
+  postOrder,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Order)
