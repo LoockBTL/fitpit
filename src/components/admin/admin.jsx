@@ -5,9 +5,9 @@ import Table from "./table/index";
 
 const Admin = ({loginData, state}) => {
   const {error, loginStatus,userType } = loginData;
-  if (loginStatus === false) return <Login/>;
+  if (loginStatus === true) return <Login/>;
   if (error === "Fail login") return <Login error={error}/>
-  if(userType === 'admin') {
+  if(userType === 'user') {
   return (
     <div>
       <p className={s.title}>Admin panel</p>

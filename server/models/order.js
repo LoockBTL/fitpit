@@ -22,7 +22,7 @@ const orderSchema = new Schema(
       type: String,
       required: true,
     },
-    entities: [orderProductsSchema],
+    order: orderProductsSchema,
     name: {
       type: String,
       required: true,
@@ -39,7 +39,7 @@ const orderSchema = new Schema(
       type: String,
       required: true,
     },
-  }
+  }, { versionKey: '_somethingElse' }
 )
 
 const Order = mongoose.model('Order', orderSchema)

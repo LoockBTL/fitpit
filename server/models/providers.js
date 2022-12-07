@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const providerSchema = new Schema({
-  id: {
-    type: String,
-    required: true,
-  },    
   companyName: {
     type: String,
     required: true,
@@ -34,7 +30,8 @@ const providerSchema = new Schema({
     type: String,
     required: true,
   },
-})
+}, { versionKey: '_somethingElse' }
+)
 
 const Provider = mongoose.model('Provider', providerSchema);
 

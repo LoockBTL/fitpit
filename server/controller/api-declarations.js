@@ -11,5 +11,30 @@ const getDeclaration = (req, res) => {
   console.log(`GET | Send Declaration`)
 }
 
+const postDeclaration = (req, res) => {
+  const { providerID, data, entities } = req.body
+  const declaration = new Declaration({providerID, data, entities})
+  declaration
+    .save()
+    .then((declaration) => res.status(200).json(declaration))
+    .catch((error) => handleError(res, error))
+  console.log('Created Declaration')
+}
 
-module.exports = { getDeclaration }
+const deleteDeclaration = (req, res) => {
+  const {id}  = req.params
+  Declaration.findByIdAndDelete(id)
+    .then((declaration) => res.status(200).json(id))
+    .catch((error) => handleError(res, error))
+  console.log(`DELETE | Declaration ${id}`)
+}
+
+const putDeclaration = (req, res) => {
+  const { _id, changing } = req.body
+  Declaration.findByIdAndUpdate(_id, { ...changing }, { new: true })
+    .then((declaration) => res.status(200).json(declaration))
+    .catch((error) => handleError(res, error))
+  console.log(`PUT | Declaration ${_id}`)
+}
+
+module.exports = { getDeclaration, putDeclaration, deleteDeclaration, postDeclaration }

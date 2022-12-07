@@ -1,25 +1,32 @@
 import s from './form.module.css'
 
+
+
+function changeObj(table, item, arr, obj, e){
+
+}
+
+function createObj(table, item, arr, obj, e){
+
+}
+
 const Form = ({ type, table, item, arr, obj }) => {
   console.log(item, arr, obj)
   const onSubmit = (e) => {
     e.preventDefault()
+    console.log(e)
+    switch(type){
+      case 'change':
+        changeObj(table, item, arr, obj, e);
+        break;
+      case "create":
+        createObj(table, item, arr, obj, e);
+        break;
+      default:
+        break
+    }
   }
   switch (type) {
-    case 'delete':
-      return (
-        <form className={s.from} onSubmit={onSubmit}>
-          {table.map((obj) => {
-            return (
-              <div>
-                <label>{obj.name}</label>
-                <input type="checkbox" id={obj.id}/>
-              </div>
-            )
-          })}
-          <input type="submit" value="submit" />
-        </form>
-      )
     case 'create':
       const object = Object.keys(table[0])
       return (
@@ -29,7 +36,7 @@ const Form = ({ type, table, item, arr, obj }) => {
             return (
               <div className={s.label}>
                 <label>{obj}</label>
-                <input required id={obj} />
+                <input required value={obj} />
               </div>
             )
           })}
@@ -43,13 +50,15 @@ const Form = ({ type, table, item, arr, obj }) => {
       return (
         <form className={s.from} onSubmit={onSubmit}>
           <label>{arr}</label>
-          <input type="text" placeholder={arr} />
+          <input type="text" placeholder={arr} value={obj._id}/>
           <input type="submit" value="submit" />
         </form>
       )
     default:
-      break;
+      break
   }
 }
+
+
 
 export default Form

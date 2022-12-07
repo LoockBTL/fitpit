@@ -1,11 +1,25 @@
 export const LOAD_PRODUCTS = 'LOAD_PRODUCTS';
-export const LOAD_BUSKET = 'LOAD_BUSKET';
 export const LOAD_ORDER = 'LOAD_ORDER';
 export const LOAD_PROVIDERS = 'LOAD_PROVIDERS';
-export const LOGIN = 'LOGIN';
 export const LOAD_DECLARATIONS = "LOAD_DECLARATIONS";
 
 export const POST_ORDER = "POST_ORDER";
+export const POST_PRODUCTS = "POST_PRODUCTS";
+export const POST_PROVIDERS = "POST_PROVIDERS";
+export const POST_DECLARATIONS = "POST_DECLARATIONS";
+
+export const DELETE_ORDER = "DELETE_ORDER";
+export const DELETE_PRODUCTS = "DELETE_PRODUCTS";
+export const DELETE_PROVIDERS = "DELETE_PROVIDERS";
+export const DELETE_DECLARATIONS = "DELETE_DECLARATIONS";
+
+export const PUT_ORDER = "PUT_ORDER";
+export const PUT_PRODUCTS = "PUT_PRODUCTS";
+export const PUT_PROVIDERS = "PUT_PROVIDERS";
+export const PUT_DECLARATIONS = "PUT_DECLARATIONS";
 
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
+export const LOGIN = 'LOGIN';
+
+export const LOAD_BUSKET = 'LOAD_BUSKET';

@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { loadOrder, loadProducts, loadProviders, loadDeclarations } from '../../../redux/actions'
+import {
+  loadOrder,
+  loadProducts,
+  loadProviders,
+  loadDeclarations,
+} from '../../../redux/actions'
+import ReactTable from '../../react-table/index'
 import Form from './form/index'
-import TableItem from './table-item/index'
 import s from './table.module.css'
+import Styles from '../../style'
+
 
 const Table = ({
   loadDeclarations,
@@ -13,23 +20,18 @@ const Table = ({
   providers,
   product,
   orders,
-  declarations
+  declarations,
 }) => {
   useEffect(() => {
     loadDeclarations()
     loadOrder()
     loadProducts()
     loadProviders()
-  },[]) // eslint-disable-line
-  console.log(declarations)
+  }, []) // eslint-disable-line
   const [table, setTable] = useState(product)
   const [form, setForm] = useState(<></>)
 
-  if(product.length === 0) return (<div>loading</div>)
-
-  const deleteLine = (table) => {
-    setForm(<Form table={table} type="delete" />)
-  }
+  if (product.length === 0) return <div>loading</div>
 
   const createLine = (table) => {
     setForm(<Form table={table} type="create" />)
@@ -73,10 +75,12 @@ const Table = ({
           </button>
         </div>
         <div className={s.main__table}>
-          <TableItem table={table} setForm={setForm} />
+          {/* <TableItem table={table} setForm={setForm} /> */}
+          <Styles>
+            <ReactTable table={table} />
+          </Styles>
           <div className={s.functions}>
             <div>
-              <button onClick={() => deleteLine(table)}>Delete</button>
               <button onClick={() => createLine(table)}>Create</button>
             </div>
           </div>
@@ -91,14 +95,14 @@ const mapStateToProps = (state) => ({
   product: state.products,
   providers: state.providers,
   orders: state.order,
-  declarations: state.declarations
+  declarations: state.declarations,
 })
 
 const mapDispatchToProps = {
   loadOrder,
   loadProducts,
   loadProviders,
-  loadDeclarations
+  loadDeclarations,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table)

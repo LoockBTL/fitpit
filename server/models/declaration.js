@@ -23,7 +23,7 @@ const declarationSchema = new Schema(
       required: true,
     },
     entities: declarationProductsSchema,
-  }
+  }, { versionKey: '_somethingElse' }
 )
 
 const Declaration = mongoose.model('Declaration', declarationSchema)
