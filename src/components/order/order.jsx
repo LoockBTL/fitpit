@@ -24,6 +24,7 @@ const Order = ({ order, orderProducts, postOrder }) => {
       number: number.current.value,
       date,
       entities: orderProducts.map(({_id, total}) => ({_id, total})),
+      createDeclaration: true
     })
   }
 

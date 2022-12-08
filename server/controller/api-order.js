@@ -1,4 +1,4 @@
-const Order = require('../models/order')
+const {Order } = require('../models/order')
 const Product = require('../models/products')
 const Declaration = require('../models/declaration')
 
@@ -49,19 +49,20 @@ const getOrders = (req, res) => {
 }
 
 const postOrder = (req, res) => {
-  const { date, email, entities, name, number, secondName, thirdName } =
+  const { date, email, entities, name, number, secondName, thirdName, createDeclaration } =
     req.body
-  uppdateAmount(entities)
+    if(createDeclaration){
+      uppdateAmount(entities)
+    }
   let idTotal = '', totalAmount = '';
   const plusId = (_id) => {
-    console.log(_id)
     idTotal += `${_id} ,`
   }
   const plusTotal = (total) => {
     totalAmount += `${total} ,` 
   }
   entities.forEach(({_id, total}) => {plusId(_id); plusTotal(total)}  )
-  const busket = {_id: idTotal, total: totalAmount}
+  const busket = {productID: idTotal, total: totalAmount}
   const order = new Order({
     date,
     email,
@@ -83,6 +84,8 @@ const putOrder = (req, res) => {
   Order.findByIdAndUpdate(_id, { ...changing }, { new: true })
     .then((order) => res.status(200).json(order))
     .catch((error) => handleError(res, error))
+    console.log(`ID: ${_id}, changing: ${changing}, RASPARS: ${{...changing}}`)
+
   console.log(`PUT | Order ${_id}`)
 }
 

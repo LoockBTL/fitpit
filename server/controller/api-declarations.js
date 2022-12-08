@@ -1,4 +1,4 @@
-const Declaration = require('../models/declaration')
+const {Declaration} = require('../models/declaration')
 
 const handleError = (res, error) => {
   res.status(500).send(error.message)
@@ -26,14 +26,20 @@ const deleteDeclaration = (req, res) => {
   Declaration.findByIdAndDelete(id)
     .then((declaration) => res.status(200).json(id))
     .catch((error) => handleError(res, error))
+    
   console.log(`DELETE | Declaration ${id}`)
 }
 
 const putDeclaration = (req, res) => {
   const { _id, changing } = req.body
-  Declaration.findByIdAndUpdate(_id, { ...changing }, { new: true })
+ 
+    Declaration.findByIdAndUpdate(_id, { ...changing }, { new: true })
     .then((declaration) => res.status(200).json(declaration))
     .catch((error) => handleError(res, error))
+    console.log(`ID: ${_id}, changing: ${changing}, RASPARS: ${{...changing}}`)
+  
+  
+
   console.log(`PUT | Declaration ${_id}`)
 }
 

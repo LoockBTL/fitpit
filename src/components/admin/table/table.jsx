@@ -7,9 +7,10 @@ import {
   loadDeclarations,
 } from '../../../redux/actions'
 import ReactTable from '../../react-table/index'
-import Form from './form/index'
+// import Form from './form/index'
 import s from './table.module.css'
 import Styles from '../../style'
+import Form from './form/form'
 
 
 const Table = ({
@@ -29,13 +30,7 @@ const Table = ({
     loadProviders()
   }, []) // eslint-disable-line
   const [table, setTable] = useState(product)
-  const [form, setForm] = useState(<></>)
-
   if (product.length === 0) return <div>loading</div>
-
-  const createLine = (table) => {
-    setForm(<Form table={table} type="create" />)
-  }
 
   return (
     <div>
@@ -44,7 +39,6 @@ const Table = ({
           <button
             onClick={() => {
               setTable(product)
-              setForm(<></>)
             }}
           >
             Product
@@ -52,7 +46,6 @@ const Table = ({
           <button
             onClick={() => {
               setTable(providers)
-              setForm(<></>)
             }}
           >
             Providers
@@ -60,7 +53,7 @@ const Table = ({
           <button
             onClick={() => {
               setTable(orders)
-              setForm(<></>)
+ 
             }}
           >
             Orders
@@ -68,25 +61,19 @@ const Table = ({
           <button
             onClick={() => {
               setTable(declarations)
-              setForm(<></>)
+    
             }}
           >
             Declarations
           </button>
         </div>
         <div className={s.main__table}>
-          {/* <TableItem table={table} setForm={setForm} /> */}
           <Styles>
             <ReactTable table={table} />
           </Styles>
-          <div className={s.functions}>
-            <div>
-              <button onClick={() => createLine(table)}>Create</button>
-            </div>
-          </div>
         </div>
+        <Form table={table}/>
       </div>
-      {form}
     </div>
   )
 }

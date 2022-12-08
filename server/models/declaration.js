@@ -28,4 +28,5 @@ const declarationSchema = new Schema(
 
 const Declaration = mongoose.model('Declaration', declarationSchema)
 
-module.exports = Declaration;
+
+module.exports = {Declaration};

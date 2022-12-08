@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const orderProductsSchema = new Schema({
-  _id: {
+  productID: {
     type: String,
     required: true,
   },
@@ -44,4 +44,4 @@ const orderSchema = new Schema(
 
 const Order = mongoose.model('Order', orderSchema)
 
-module.exports = Order
+module.exports = {Order}

@@ -19,15 +19,15 @@ export function objToArray(objMain) {
         number: obj.number,
         secondName: obj.secondName,
         thirdName: obj.thirdName,
-        productID: obj.order._id,
+        productID: obj.order.productID,
         totalAmount: obj.order.total,
+        order_id: obj.order._id
       }
     })
   } else if (arrayContains('entities', keys)) {
     return objMain.map((obj) => {
       return {
         _id: obj._id,
-        date: obj.date,
         providerID: obj.providerID,
         data: obj.data,
         productID: obj.entities.productID,

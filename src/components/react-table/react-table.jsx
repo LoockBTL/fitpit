@@ -4,7 +4,7 @@ import { useTable, useRowSelect, useGlobalFilter } from 'react-table'
 import { arrayContains, objToArray, deleteObj } from './utils-form'
 import { connect } from 'react-redux'
 import { GlobalFilter } from './GlobalFilter'
-import {EditableCell} from './EditabelCell'
+import EditableCell from './EditabelCell'
 import {
   deleteDeclaration,
   deleteOrder,
@@ -37,11 +37,7 @@ const declarationsColomns = [
       {
         Header: 'orderAmount',
         accessor: 'orderAmount',
-      },
-      {
-        Header: 'object_id',
-        accessor: 'object_id',
-      },
+      }
     ],
   },
 ]
