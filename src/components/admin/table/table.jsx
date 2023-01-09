@@ -12,7 +12,6 @@ import s from './table.module.css'
 import Styles from '../../style'
 import Form from './form/form'
 
-
 const Table = ({
   loadDeclarations,
   loadOrder,
@@ -30,7 +29,7 @@ const Table = ({
     loadProviders()
   }, []) // eslint-disable-line
   const [table, setTable] = useState(product)
-  if (product.length === 0) return <div>loading</div>
+  if (product === null) return <div>loading</div>
 
   return (
     <div>
@@ -53,7 +52,6 @@ const Table = ({
           <button
             onClick={() => {
               setTable(orders)
- 
             }}
           >
             Orders
@@ -61,7 +59,6 @@ const Table = ({
           <button
             onClick={() => {
               setTable(declarations)
-    
             }}
           >
             Declarations
@@ -72,7 +69,7 @@ const Table = ({
             <ReactTable table={table} />
           </Styles>
         </div>
-        <Form table={table}/>
+        <Form table={table} />
       </div>
     </div>
   )

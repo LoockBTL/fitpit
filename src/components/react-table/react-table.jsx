@@ -13,7 +13,6 @@ import {
 } from '../../redux/actions'
 import Checkbox from './Checkbox'
 
-
 const declarationsColomns = [
   {
     Header: '_id',
@@ -37,7 +36,7 @@ const declarationsColomns = [
       {
         Header: 'orderAmount',
         accessor: 'orderAmount',
-      }
+      },
     ],
   },
 ]
@@ -91,7 +90,7 @@ const ReactTable = ({
   deleteOrder,
   deleteProduct,
   deleteProvider,
-  updateMyData
+  updateMyData,
 }) => {
   const tableKeys = Object.keys(table[0])
   const newTable = useMemo(() => objToArray(table), [table])
@@ -100,6 +99,9 @@ const ReactTable = ({
     () =>
       newTable[0]
         ? Object.keys(newTable[0]).map((key) => {
+            if (key === 'price') {
+              return { Header: key, accessor: key }
+            }
             return { Header: key, accessor: key }
           })
         : [],
@@ -113,10 +115,10 @@ const ReactTable = ({
     : arrayContains('order', tableKeys)
     ? orderColomns
     : productColomns
-  
-    const defaultColumn = {
-      Cell: EditableCell,
-    }
+
+  const defaultColumn = {
+    Cell: EditableCell,
+  }
 
   const {
     getTableProps,
@@ -131,7 +133,7 @@ const ReactTable = ({
     {
       columns: tableColomns,
       data: productData,
-      defaultColumn
+      defaultColumn,
     },
     useGlobalFilter,
     useRowSelect,
@@ -160,11 +162,11 @@ const ReactTable = ({
     }
   )
 
-  const { globalFilter} = state
+  const { globalFilter } = state
 
   return (
     <div>
-      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
+      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -197,16 +199,15 @@ const ReactTable = ({
           return created
         } else if (arrayContains('fathersName', keys)) {
           created = deleteObj(d.original, deleteProvider)
-          return created 
+          return created
         } else if (arrayContains('thirdName', keys)) {
           // Orders
           created = deleteObj(d.original, deleteOrder)
-          return created 
-
+          return created
         } else if (arrayContains('data', keys)) {
           //Declarations
           created = deleteObj(d.original, deleteDeclaration)
-          return created 
+          return created
         } else return created
       })}
     </div>

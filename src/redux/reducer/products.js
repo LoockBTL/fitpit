@@ -1,20 +1,25 @@
-import { DELETE_PRODUCTS, LOAD_PRODUCTS, POST_PRODUCTS, PUT_PRODUCTS } from "../constatns";
+import {
+  DELETE_PRODUCTS,
+  LOAD_PRODUCTS,
+  POST_PRODUCTS,
+  PUT_PRODUCTS,
+} from '../constatns'
 
-const products = (state = [], action) => {
-  const {type, data} = action;
+const products = (state = null, action) => {
+  const { type, data } = action
 
   switch (type) {
     case LOAD_PRODUCTS:
-      return state = data
+      return (state = data)
     case POST_PRODUCTS:
-      return state;
+      return state
     case PUT_PRODUCTS:
-      return state;
+      return state
     case DELETE_PRODUCTS:
-      return state;
+      return state
     default:
       return state
   }
 }
 
-export default products;
+export default products

@@ -4,3 +4,7 @@
   max-width: 1080px;
   flex-wrap: wrap;
 }
+.options {
+  display: flex;
+  flex-direction: column;
+}
